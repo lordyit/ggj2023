@@ -31,6 +31,15 @@ public class EnemyOne : MonoBehaviour
         _waitTakeDamage = new WaitForSeconds(0.1f);
     }
 
+    private void OnEnable()
+    {
+        LevelManager.EnemyOne.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        LevelManager.EnemyOne.Remove(this);
+    }
     private void SetUpComponents()
     {
         _agent = GetComponent<NavMeshAgent>();

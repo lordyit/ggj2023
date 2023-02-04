@@ -11,6 +11,9 @@ public class NormalTree : MonoBehaviour
     [SerializeField] private float _lives;
     [SerializeField] private Transform[] _summonRootSpawn;
 
+    [Header("Spawner")]
+    [SerializeField] private bool _spawnerTree;
+
     private SpriteRenderer _sprite;
     private WaitForSeconds _waitTakeDamage;
 
@@ -20,6 +23,15 @@ public class NormalTree : MonoBehaviour
     {
         SetUpComponents();
         _waitTakeDamage = new WaitForSeconds(0.1f);
+    }
+    private void OnEnable()
+    {
+        LevelManager.NormalTree.Add(this);
+    }
+    private void OnDisable()
+    {
+        LevelManager.NormalTree.Remove(this);
+        LevelManager.Instance.CheckEndLevel();
     }
     private void SetUpComponents()
     {
@@ -39,6 +51,8 @@ public class NormalTree : MonoBehaviour
 
     private void TimerToSpawn()
     {
+        if (!_spawnerTree) return;
+
         timer += Time.deltaTime;
         if (timer < timeToSpawn) return;
 
@@ -73,6 +87,7 @@ public class NormalTree : MonoBehaviour
     {
         if (_myRoots.Count > 0) return;
         if (!_canTakeDamage) return;
+        if (!CanTakeDamage()) return;
 
         _lives -= damage;
         if (_lives <= 0)
@@ -83,6 +98,14 @@ public class NormalTree : MonoBehaviour
         {
             StartCoroutine(TakeDamageCr());
         }
+    }
+
+    private bool CanTakeDamage()
+    {
+        if (LevelManager.EnemyOne.Count == 0 &&
+            LevelManager.EnemyTwo.Count == 0) return true;
+
+        return false;
     }
 
     IEnumerator TakeDamageCr()

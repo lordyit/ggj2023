@@ -29,6 +29,16 @@ public class EnemyTwo : MonoBehaviour
         SetUpVariables();
     }
 
+    private void OnEnable()
+    {
+        LevelManager.EnemyTwo.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        LevelManager.EnemyTwo.Remove(this);
+    }
+
     private void SetUpComponents()
     {
         _animator = GetComponentInChildren<Animator>();

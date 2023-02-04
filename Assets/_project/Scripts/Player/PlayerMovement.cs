@@ -50,6 +50,14 @@ public class PlayerMovement : MonoBehaviour
         else _playerAnimations.IdleAnimation();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponentInParent<Portal>())
+        {
+            other.GetComponentInParent<Portal>().EnterGate();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
