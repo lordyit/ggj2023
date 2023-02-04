@@ -34,6 +34,7 @@ public class NormalTree : MonoBehaviour
         int randomSpawn = Random.Range(0, _myRoots[randomRoot].SpawnSpots.Length);
 
         GameObject enemy = Instantiate(_enemyOne, _myRoots[randomRoot].SpawnSpots[randomSpawn]);
+        enemy.gameObject.transform.SetParent(null);
     }
 
     private void TimerToSpawn()
@@ -46,8 +47,8 @@ public class NormalTree : MonoBehaviour
         {
             int randomSeed = Random.Range(0, _summonRootSpawn.Length);
             TreeRoots root = Instantiate(_root, _summonRootSpawn[randomSeed]).GetComponent<TreeRoots>();
-            root.gameObject.transform.SetParent(null);
             AddRoot(root);
+            root._myTree = this;
         }
         timer = 0;
     }

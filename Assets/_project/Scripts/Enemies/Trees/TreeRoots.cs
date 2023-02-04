@@ -5,6 +5,7 @@ using UnityEngine;
 public class TreeRoots : MonoBehaviour
 {
     public Transform[] SpawnSpots;
+    public NormalTree _myTree;
 
     [SerializeField] private int lives;
 
@@ -34,6 +35,7 @@ public class TreeRoots : MonoBehaviour
         lives -= damage;
         if (lives <= 0)
         {
+            _myTree.RemoveRoot(this);
             Destroy(this.gameObject);
         }
         else
