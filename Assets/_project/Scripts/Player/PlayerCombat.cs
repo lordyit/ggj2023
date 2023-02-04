@@ -11,7 +11,7 @@ public class PlayerCombat : MonoBehaviour
     private SpriteRenderer _sprite;
 
     [SerializeField] Transform[] _swordPositions;
-    [SerializeField] GameObject _sword;
+    public GameObject _sword;
 
     public bool CanAttack = true;
     public bool CanTakeDamage = true;

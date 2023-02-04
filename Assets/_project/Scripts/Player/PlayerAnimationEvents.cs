@@ -27,4 +27,14 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         _playerMovement.CanMove = true;
     }
+
+    public void Attack()
+    {
+        _playerCombat._sword.SetActive(true);
+    }
+
+    public void DeactiveSword()
+    {
+        _playerCombat._sword.SetActive(false);
+    }
 }
