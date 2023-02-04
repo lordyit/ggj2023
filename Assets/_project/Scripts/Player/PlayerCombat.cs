@@ -8,8 +8,13 @@ public class PlayerCombat : MonoBehaviour
     private PlayerAnimations _playerAnimations;
     private PlayerMovement _playerMovement;
     private PlayerStatus _playerStatus;
+    private SpriteRenderer _sprite;
+
+    [SerializeField] Transform[] _swordPositions;
+    [SerializeField] GameObject _sword;
 
     public bool CanAttack = true;
+    public bool CanTakeDamage = true;
 
     private void Awake()
     {
@@ -22,6 +27,7 @@ public class PlayerCombat : MonoBehaviour
         _playerAnimations = GetComponent<PlayerAnimations>();
         _playerMovement = GetComponent<PlayerMovement>();
         _playerStatus = GetComponent<PlayerStatus>();
+        _sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Attack()
@@ -36,12 +42,22 @@ public class PlayerCombat : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (!CanTakeDamage) return;
+
+        CanTakeDamage = false;
         _playerStatus.ChangeLives(damage);
+        _playerAnimations.TakeDamageAnimation();
     }
 
-    // Update is called once per frame
+    private void PositionSword()
+    {
+        if (!_sprite.flipX) _sword.transform.position = _swordPositions[0].position;
+        else _sword.transform.position = _swordPositions[1].position;
+    }
+
     void Update()
     {
         Attack();
+        PositionSword();
     }
 }

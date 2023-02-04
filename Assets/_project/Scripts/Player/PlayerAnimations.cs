@@ -6,6 +6,9 @@ public class PlayerAnimations : MonoBehaviour
 {
     private Animator _animator;
     private SpriteRenderer _sprite;
+    private PlayerCombat _playerCombat;
+
+    WaitForSeconds _waitTakeDamage;
 
     private string _movementKey = "move";
     private string _attackKey = "attack";
@@ -17,7 +20,7 @@ public class PlayerAnimations : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _waitTakeDamage = new WaitForSeconds(0.1f);
     }
 
     public SpriteRenderer GetSprite()
@@ -29,6 +32,7 @@ public class PlayerAnimations : MonoBehaviour
     {
         _animator = GetComponentInChildren<Animator>();
         _sprite = GetComponentInChildren<SpriteRenderer>();
+        _playerCombat = GetComponent<PlayerCombat>();
     }
 
     public void WalkAnimation(bool invert)
@@ -49,9 +53,19 @@ public class PlayerAnimations : MonoBehaviour
         _animator.SetTrigger(_attackKey);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamageAnimation()
     {
-        
+        StartCoroutine(TakeDamageCr());
+    }
+
+    IEnumerator TakeDamageCr()
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            _sprite.enabled = !_sprite.enabled;
+            yield return _waitTakeDamage;
+        }
+        _sprite.enabled = true;
+        _playerCombat.CanTakeDamage = true;
     }
 }

@@ -45,12 +45,9 @@ public class PlayerMovement : MonoBehaviour
         bool turn = false;
         if (_finalMove.x < 0) turn = true;
         if (_finalMove.x == 0) turn = _playerAnimations.GetSprite().flipX;
-        if (_finalMove.x != 0 || _finalMove.z != 0)
-        {
-            _playerAnimations.WalkAnimation(turn);
-        }
-        else
-            _playerAnimations.IdleAnimation();
+
+        if (_finalMove.x != 0 || _finalMove.z != 0) _playerAnimations.WalkAnimation(turn);
+        else _playerAnimations.IdleAnimation();
     }
 
     // Update is called once per frame
