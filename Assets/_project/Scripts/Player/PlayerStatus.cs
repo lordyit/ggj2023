@@ -9,6 +9,5 @@ public class PlayerStatus : MonoBehaviour
     public void ChangeLives(int change)
     {
         Lives -= change;
-        Debug.Log("Damage taken");
     }
 }
