@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 4787068183020160665}
   - component: {fileID: 4787068183020160666}
   - component: {fileID: 2470125896249894849}
+  - component: {fileID: 9171615275546942950}
   - component: {fileID: 4787068183020160663}
   m_Layer: 0
   m_Name: Player
@@ -331,6 +332,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lives: 3
+--- !u!114 &9171615275546942950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787068183020160659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c30af40a5311149ad8c0aa43d936c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FreezeEffectTime: 0.1
 --- !u!143 &4787068183020160663
 CharacterController:
   m_ObjectHideFlags: 0
@@ -423,7 +437,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6ea1b07fa1ba7d84a9dc3271e8b459bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
