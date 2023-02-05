@@ -26,6 +26,11 @@ public class NormalTree : MonoBehaviour
     }
     private void OnEnable()
     {
+        StartCoroutine(AddtoList());
+    }
+    IEnumerator AddtoList()
+    {
+        yield return new WaitForSeconds(0.1f);
         LevelManager.NormalTree.Add(this);
     }
     private void OnDisable()
@@ -45,7 +50,7 @@ public class NormalTree : MonoBehaviour
         int randomRoot = Random.Range(0, _myRoots.Count);
         int randomSpawn = Random.Range(0, _myRoots[randomRoot].SpawnSpots.Length);
 
-        GameObject enemy = Instantiate(_enemyOne, _myRoots[randomRoot].SpawnSpots[randomSpawn]);
+        GameObject enemy = Instantiate(_enemyOne, _myRoots[randomRoot].SpawnSpots[randomSpawn].position, Quaternion.identity);
         enemy.gameObject.transform.SetParent(null);
     }
 
@@ -60,7 +65,8 @@ public class NormalTree : MonoBehaviour
         else
         {
             int randomSeed = Random.Range(0, _summonRootSpawn.Length);
-            TreeRoots root = Instantiate(_root, _summonRootSpawn[randomSeed]).GetComponent<TreeRoots>();
+            TreeRoots root = Instantiate(_root, _summonRootSpawn[randomSeed].position,
+                _summonRootSpawn[randomSeed].rotation).GetComponent<TreeRoots>();
             AddRoot(root);
             root._myTree = this;
         }
@@ -90,6 +96,7 @@ public class NormalTree : MonoBehaviour
         if (!CanTakeDamage()) return;
 
         FeelManager.Instance.ShakeCamera(5, 0.1f);
+        FeelManager.Instance.HitVfxActive(transform);
         _lives -= damage;
         if (_lives <= 0)
         {

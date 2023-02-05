@@ -33,12 +33,19 @@ public class EnemyOne : MonoBehaviour
 
     private void OnEnable()
     {
+        StartCoroutine(AddtoList());
+    }
+
+    IEnumerator AddtoList()
+    {
+        yield return new WaitForSeconds(0.1f);
         LevelManager.EnemyOne.Add(this);
     }
 
     private void OnDisable()
     {
         LevelManager.EnemyOne.Remove(this);
+        LevelManager.Instance.CheckEndLevel();
     }
     private void SetUpComponents()
     {
@@ -90,9 +97,8 @@ public class EnemyOne : MonoBehaviour
 
             _canTakeDamage = false;
             _enemyStatus.ReduceLife(1);
-
-            if (_enemyStatus.Lives <= 0) Destroy(this.gameObject);
-            else StartCoroutine(TakeDamageCr());
+            StartCoroutine(TakeDamageCr());
+            
         }
     }
 
@@ -119,6 +125,8 @@ public class EnemyOne : MonoBehaviour
     IEnumerator TakeDamageCr()
     {
         FeelManager.Instance.ShakeCamera(5, 0.1f);
+        FeelManager.Instance.HitVfxActive(transform);
+        if (_enemyStatus.Lives <= 0) Destroy(this.gameObject);
         for (int i = 0; i < 5; i++)
         {
             _sprite.enabled = !_sprite.enabled;

@@ -22,6 +22,8 @@ public class LevelManager : MonoBehaviour
     public void CheckEndLevel()
     {
         if (NormalTree.Count > 0) return;
+        if (EnemyOne.Count > 0) return;
+        if (EnemyTwo.Count > 0) return;
 
         _portal.OpenGate();
     }
