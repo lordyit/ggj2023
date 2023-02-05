@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyOne : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject deadEnemy;
+
     [SerializeField] private float distance;
 
     public int MyDamage;
@@ -152,6 +155,9 @@ public class EnemyOne : MonoBehaviour
         {
             SoundManager.Instance.PlaySFX(SoundManager.AudioClipID.ENEMY_DEATH_2);
         }
+
+        Debug.LogError("die called", this);
+        Instantiate(deadEnemy, transform.position, Quaternion.LookRotation(forward: -Vector3.up));
 
         if (gameObject != null)
         {

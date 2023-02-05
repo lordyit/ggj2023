@@ -20,8 +20,22 @@ public class Portal : MonoBehaviour
     public void OpenGate()
     {
         Open = true;
-        _collider.isTrigger = true;
-        _animator.enabled = true;
+        if (_collider != null)
+        {
+            _collider.isTrigger = true;
+        }
+        else
+        {
+            Debug.LogError("[Portal] Collider is null (already destroyed)", this);
+        }
+        if (_animator != null)
+        {
+            _animator.enabled = true;
+        }
+        else
+        {
+            Debug.LogError("[Portal] _animator is null (already destroyed)", this);
+        }
     }
 
     public void EnterGate()

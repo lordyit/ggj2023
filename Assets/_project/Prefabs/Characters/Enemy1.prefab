@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba623d17004d8894899544e41616e0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadEnemy: {fileID: 3768880329376248689, guid: 84e0d365d156029448828ae70fb13644, type: 3}
   distance: 15
   MyDamage: 1
   Attacking: 0

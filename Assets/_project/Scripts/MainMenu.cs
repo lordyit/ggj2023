@@ -11,12 +11,19 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject creditsScreen = null;
 
+    private void Awake()
+    {
+        SoundManager.Instance.PlayMusic(SoundManager.AudioClipID.MENU_MUSIC);
+    }
+
     public void OnPlayButtonClick()
     {
         PlayButtonSFX();
         loadingScreen.SetActive(true);
         const int GAME_SCENE_INDEX = 1;
         SceneManager.LoadSceneAsync(GAME_SCENE_INDEX);
+
+        SoundManager.Instance.PlayMusic(SoundManager.AudioClipID.GAMEPLAY_MUSIC);
     }
 
     public void OnControlsButtonClick()
