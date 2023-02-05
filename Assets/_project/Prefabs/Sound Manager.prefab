@@ -964,9 +964,9 @@ MonoBehaviour:
   - {fileID: 7412864174032128727}
   audioClipRegisters:
   - id: 1
-    audioClip: {fileID: 8300000, guid: 3062449001fbbdf4a9905410458995ef, type: 3}
+    audioClip: {fileID: 8300000, guid: aa6ca6b558f0c0a43bf77acd45840de1, type: 3}
   - id: 2
-    audioClip: {fileID: 8300000, guid: 83cab8998f2f28f43b7a014b9ca3cc0f, type: 3}
+    audioClip: {fileID: 8300000, guid: df7d0e31ad527414c92e1144406e1311, type: 3}
   - id: 3
     audioClip: {fileID: 8300000, guid: d22af5731f8b5894a8fb19c3e9f0d85c, type: 3}
   - id: 5
@@ -1295,7 +1295,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
