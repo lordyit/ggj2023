@@ -92,7 +92,7 @@ public class EnemyTwo : MonoBehaviour
     {
         FeelManager.Instance.ShakeCamera(5, 0.1f);
         FeelManager.Instance.HitVfxActive(transform, FeelManager.Instance.HitVfx);
-        if (_enemyStatus.Lives <= 0) Destroy(this.gameObject);
+        if (_enemyStatus.Lives <= 0) Die();
         for (int i = 0; i < 5; i++)
         {
             _sprite.enabled = !_sprite.enabled;
@@ -100,6 +100,11 @@ public class EnemyTwo : MonoBehaviour
         }
         _sprite.enabled = true;
         _canTakeDamage = true;
+    }
+
+    public void Die()
+    {
+        Destroy(this.gameObject);
     }
 
     // Update is called once per frame

@@ -107,7 +107,14 @@ public class EnemyOne : MonoBehaviour
         if (other.GetComponent<PlayerMovement>())
         {
             _chasePlayer = false;
-            _agent.isStopped = true;
+            if (_agent.isActiveAndEnabled)
+            {
+                _agent.isStopped = true;
+            }
+            else
+            {
+                Debug.LogError("[EnemyOne] agent is not active or is not enabled.", this);
+            }
             if (!Attacking)
                 _animator.SetTrigger("attack");
         }
@@ -126,7 +133,7 @@ public class EnemyOne : MonoBehaviour
     {
         FeelManager.Instance.ShakeCamera(5, 0.1f);
         FeelManager.Instance.HitVfxActive(transform, FeelManager.Instance.HitVfx);
-        if (_enemyStatus.Lives <= 0) Destroy(this.gameObject);
+        if (_enemyStatus.Lives <= 0) Die();
         for (int i = 0; i < 5; i++)
         {
             _sprite.enabled = !_sprite.enabled;
@@ -134,6 +141,11 @@ public class EnemyOne : MonoBehaviour
         }
         _sprite.enabled = true;
         _canTakeDamage = true;
+    }
+
+    public void Die()
+    {
+        Destroy(this.gameObject);
     }
 
     void Update()

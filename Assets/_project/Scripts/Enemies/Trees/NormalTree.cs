@@ -112,10 +112,13 @@ public class NormalTree : MonoBehaviour
 
     private bool CanTakeDamage()
     {
-        if (LevelManager.EnemyOne.Count == 0 &&
-            LevelManager.EnemyTwo.Count == 0) return true;
+        // NOTE: Tree protection is deactivated to test design of hitting it while there are enemies left
+        //if (LevelManager.EnemyOne.Count == 0 &&
+        //    LevelManager.EnemyTwo.Count == 0) return true;
 
-        return false;
+        //return false;
+
+        return true;
     }
 
     IEnumerator TakeDamageCr()

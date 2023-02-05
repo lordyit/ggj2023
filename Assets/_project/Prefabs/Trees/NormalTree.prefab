@@ -81,8 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac36768267675d4fadbe53ea9e47615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _myRoots:
-  - {fileID: 0}
+  _myRoots: []
   _enemyOne: {fileID: 2140797619480434698, guid: bf08a75978244214fa3e73a61ca93f6d, type: 3}
   _root: {fileID: 8768363557354766637, guid: ec3c22f7eb8cde842975479ec1dd462e, type: 3}
   timeToSpawn: 10
@@ -193,6 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1356412581854436344}
   - component: {fileID: 1356412581854436347}
+  - component: {fileID: 5808182398809535797}
   m_Layer: 0
   m_Name: tree-2
   m_TagString: Untagged
@@ -207,14 +207,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356412581854436345}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
+  m_LocalPosition: {x: 0, y: 3.29, z: 0}
   m_LocalScale: {x: 0.40000004, y: 0.40000004, z: 0.40000004}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1356412580210842913}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
 --- !u!212 &1356412581854436347
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -267,3 +267,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5808182398809535797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356412581854436345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec8c22bca216e54c99306f60453a08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1356412581854436347}
+  runsOnUpdate: 0
