@@ -91,7 +91,7 @@ public class EnemyTwo : MonoBehaviour
     IEnumerator TakeDamageCr()
     {
         FeelManager.Instance.ShakeCamera(5, 0.1f);
-        FeelManager.Instance.HitVfxActive(transform);
+        FeelManager.Instance.HitVfxActive(transform, FeelManager.Instance.HitVfx);
         if (_enemyStatus.Lives <= 0) Destroy(this.gameObject);
         for (int i = 0; i < 5; i++)
         {

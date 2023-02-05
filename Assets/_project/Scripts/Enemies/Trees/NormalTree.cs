@@ -52,6 +52,7 @@ public class NormalTree : MonoBehaviour
 
         GameObject enemy = Instantiate(_enemyOne, _myRoots[randomRoot].SpawnSpots[randomSpawn].position, Quaternion.identity);
         enemy.gameObject.transform.SetParent(null);
+        FeelManager.Instance.HitVfxActive(enemy.transform, FeelManager.Instance.burstVfx);
     }
 
     private void TimerToSpawn()
@@ -69,6 +70,7 @@ public class NormalTree : MonoBehaviour
                 _summonRootSpawn[randomSeed].rotation).GetComponent<TreeRoots>();
             AddRoot(root);
             root._myTree = this;
+            FeelManager.Instance.HitVfxActive(root.gameObject.transform, FeelManager.Instance.burstVfx);
         }
         timer = 0;
     }
@@ -96,7 +98,7 @@ public class NormalTree : MonoBehaviour
         if (!CanTakeDamage()) return;
 
         FeelManager.Instance.ShakeCamera(5, 0.1f);
-        FeelManager.Instance.HitVfxActive(transform);
+        FeelManager.Instance.HitVfxActive(transform, FeelManager.Instance.HitVfx);
         _lives -= damage;
         if (_lives <= 0)
         {

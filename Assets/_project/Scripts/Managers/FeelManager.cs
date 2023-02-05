@@ -11,6 +11,7 @@ public class FeelManager : MonoBehaviour
     private float _shakeTimer;
 
     public ParticleSystem HitVfx;
+    public ParticleSystem burstVfx;
     public Vector3 offSetVfx;
     private void Awake()
     {
@@ -18,10 +19,10 @@ public class FeelManager : MonoBehaviour
         _cinemachineVirtual = GetComponent<CinemachineFreeLook>();
     }
 
-    public void HitVfxActive(Transform location)
+    public void HitVfxActive(Transform location, ParticleSystem vfx)
     {
-        HitVfx.gameObject.transform.position = location.position + offSetVfx;
-        HitVfx.Play();
+        vfx.gameObject.transform.position = location.position + offSetVfx;
+        vfx.Play();
     }
     
     public void ShakeCamera(float intensity, float timer)
