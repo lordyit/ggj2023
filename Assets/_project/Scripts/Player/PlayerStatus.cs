@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
+    [SerializeField]
+    private Transform deadPlayer = null;
+
     private PlayerMovement _playerMovement;
     private PlayerCombat _playerCombat;
     private SpriteRenderer _sprite;
@@ -34,6 +37,8 @@ public class PlayerStatus : MonoBehaviour
     {
         SoundManager.Instance.PlaySFX(SoundManager.AudioClipID.PLAYER_DEATH_1);
         SoundManager.Instance.PlaySFX(SoundManager.AudioClipID.PLAYER_DEATH_2);
+
+        Instantiate(deadPlayer, transform.position, Quaternion.LookRotation(forward: -Vector3.up));
 
         _sprite.enabled = false;
         FeelManager.Instance.HitVfxActive(transform, FeelManager.Instance.burstVfx);
