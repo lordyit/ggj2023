@@ -4,9 +4,6 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    private string gameSceneName = null;
-
-    [SerializeField]
     private GameObject loadingScreen = null;
 
     [SerializeField]
@@ -18,7 +15,8 @@ public class MainMenu : MonoBehaviour
     {
         PlayButtonSFX();
         loadingScreen.SetActive(true);
-        SceneManager.LoadSceneAsync(gameSceneName);
+        const int GAME_SCENE_INDEX = 1;
+        SceneManager.LoadSceneAsync(GAME_SCENE_INDEX);
     }
 
     public void OnControlsButtonClick()

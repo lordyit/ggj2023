@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 4787068183977078910}
   - component: {fileID: 4787068183977078909}
   - component: {fileID: 4787068183977080704}
+  - component: {fileID: 7715051190673342752}
   m_Layer: 0
   m_Name: HeroKnight_0
   m_TagString: Untagged
@@ -481,3 +482,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4534088befb5c34c8c25d3f36838d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7715051190673342752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787068183977078908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec8c22bca216e54c99306f60453a08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 4787068183977078910}
+  runsOnUpdate: 1
