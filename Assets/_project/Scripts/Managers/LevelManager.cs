@@ -37,11 +37,11 @@ public class LevelManager : MonoBehaviour
 
         for (int e = 0; e < EnemyOne.Count; e++)
         {
-            EnemyOne[e].Die();
+            EnemyOne[e].Die(playSFX: false);
         }
         for (int e = 0; e < EnemyTwo.Count; e++)
         {
-            EnemyTwo[e].Die();
+            EnemyTwo[e].Die(playSFX: false);
         }
 
         _portal.OpenGate();

@@ -71,6 +71,8 @@ public class EnemyTwo : MonoBehaviour
 
     public void Shoot()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.AudioClipID.ENEMY_SPELL);
+
         Shoot _shoot = Instantiate(_shootGO, _shootExit).GetComponent<Shoot>();
         _shoot.Direction = (_playerPosition.position - _shootExit.position).normalized;
         _shoot.Direction.y = 0;
@@ -92,7 +94,9 @@ public class EnemyTwo : MonoBehaviour
     {
         FeelManager.Instance.ShakeCamera(5, 0.1f);
         FeelManager.Instance.HitVfxActive(transform, FeelManager.Instance.HitVfx);
-        if (_enemyStatus.Lives <= 0) Die();
+        EnemySound.PlayTakeDamageSFX();
+
+        if (_enemyStatus.Lives <= 0) Die(playSFX: true);
         for (int i = 0; i < 5; i++)
         {
             _sprite.enabled = !_sprite.enabled;
@@ -102,8 +106,13 @@ public class EnemyTwo : MonoBehaviour
         _canTakeDamage = true;
     }
 
-    public void Die()
+    public void Die(bool playSFX)
     {
+        if (playSFX)
+        {
+            SoundManager.Instance.PlaySFX(SoundManager.AudioClipID.ENEMY_DEATH_2);
+        }
+
         Destroy(this.gameObject);
     }
 

@@ -135,7 +135,7 @@ public class EnemyOne : MonoBehaviour
         FeelManager.Instance.HitVfxActive(transform, FeelManager.Instance.HitVfx);
         EnemySound.PlayTakeDamageSFX();
 
-        if (_enemyStatus.Lives <= 0) Die();
+        if (_enemyStatus.Lives <= 0) Die(playSFX: true);
         for (int i = 0; i < 5; i++)
         {
             _sprite.enabled = !_sprite.enabled;
@@ -146,9 +146,21 @@ public class EnemyOne : MonoBehaviour
         _canTakeDamage = true;
     }
 
-    public void Die()
+    public void Die(bool playSFX)
     {
-        Destroy(this.gameObject);
+        if (playSFX)
+        {
+            SoundManager.Instance.PlaySFX(SoundManager.AudioClipID.ENEMY_DEATH_2);
+        }
+
+        if (gameObject != null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Debug.LogError("[EnemyOne] It seems some components were already destroyed", this);
+        }
     }
 
     void Update()

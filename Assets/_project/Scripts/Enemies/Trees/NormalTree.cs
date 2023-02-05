@@ -106,6 +106,7 @@ public class NormalTree : MonoBehaviour
         if (_lives <= 0)
         {
             Destroy(this.gameObject);
+            SoundManager.Instance.PlaySFX(SoundManager.AudioClipID.TREE_DEATH);
         }
         else
         {

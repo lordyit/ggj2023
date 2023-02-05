@@ -24,6 +24,7 @@ public class EnemyOneAnimEvents : MonoBehaviour
 
     private void StartAttack()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.AudioClipID.ENEMY_1_ATTACK);
         _enemyOne.Attacking = true;
     }
 

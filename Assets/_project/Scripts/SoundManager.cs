@@ -17,7 +17,21 @@ public class SoundManager : MonoBehaviour
         ENEMY_DAMAGED_2 = 6,
         ENEMY_DAMAGED_3 = 7,
 
-        TOTAL = 8,
+        TREE_DEATH = 8,
+        
+        MYSTERIOUS_VOICES = 9,
+
+        ENEMY_DEATH_1 = 10,
+        ENEMY_DEATH_2 = 11,
+
+        ENEMY_SPELL = 12,
+
+        PLAYER_DEATH_1 = 13,
+        PLAYER_DEATH_2 = 14,
+
+        ENEMY_1_ATTACK = 15,
+
+        TOTAL = 16
     }
 
     [System.Serializable]
@@ -64,6 +78,12 @@ public class SoundManager : MonoBehaviour
     public void PlaySFX(AudioClipID clipID)
     {
         AudioSource audioSource = sfxAudioSources[currentSFXAudioSourceIndex];
+
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+
         AudioClip clip = FindAudioClip(clipID);
         audioSource.PlayOneShot(clip);
         currentSFXAudioSourceIndex = (currentSFXAudioSourceIndex + 1) % sfxAudioSources.Length;

@@ -32,6 +32,9 @@ public class PlayerStatus : MonoBehaviour
 
     public void Death()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.AudioClipID.PLAYER_DEATH_1);
+        SoundManager.Instance.PlaySFX(SoundManager.AudioClipID.PLAYER_DEATH_2);
+
         _sprite.enabled = false;
         FeelManager.Instance.HitVfxActive(transform, FeelManager.Instance.burstVfx);
         LevelManager.Instance.ActiveReloadLevel();
