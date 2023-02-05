@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyTwo : MonoBehaviour
 {
+    [SerializeField] private GameObject deadEnemy;
     [SerializeField] private float _attackDistance;
     [SerializeField] private GameObject _shootGO;
     [SerializeField] private Transform _shootExit;
@@ -112,6 +113,8 @@ public class EnemyTwo : MonoBehaviour
         {
             SoundManager.Instance.PlaySFX(SoundManager.AudioClipID.ENEMY_DEATH_2);
         }
+
+        Instantiate(deadEnemy, transform.position, Quaternion.LookRotation(forward: -Vector3.up));
 
         Destroy(this.gameObject);
     }

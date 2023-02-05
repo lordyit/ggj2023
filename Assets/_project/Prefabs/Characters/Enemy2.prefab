@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786f2747bffafca428037f29d1833d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadEnemy: {fileID: 7192317958930081080, guid: 89316c57c9895a244adce2a3e0746a27, type: 3}
   _attackDistance: 20
   _shootGO: {fileID: 2517017792497385762, guid: f431dd8b1fc76b049be503db8e6299d0, type: 3}
   _shootExit: {fileID: 8722556223249148721}
