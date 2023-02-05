@@ -96,9 +96,12 @@ public class NormalTree : MonoBehaviour
         if (_myRoots.Count > 0) return;
         if (!_canTakeDamage) return;
         if (!CanTakeDamage()) return;
+        
 
         FeelManager.Instance.ShakeCamera(5, 0.1f);
         FeelManager.Instance.HitVfxActive(transform, FeelManager.Instance.HitVfx);
+        EnemySound.PlayTakeDamageSFX();
+
         _lives -= damage;
         if (_lives <= 0)
         {

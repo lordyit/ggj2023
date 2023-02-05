@@ -133,12 +133,15 @@ public class EnemyOne : MonoBehaviour
     {
         FeelManager.Instance.ShakeCamera(5, 0.1f);
         FeelManager.Instance.HitVfxActive(transform, FeelManager.Instance.HitVfx);
+        EnemySound.PlayTakeDamageSFX();
+
         if (_enemyStatus.Lives <= 0) Die();
         for (int i = 0; i < 5; i++)
         {
             _sprite.enabled = !_sprite.enabled;
             yield return _waitTakeDamage;
         }
+
         _sprite.enabled = true;
         _canTakeDamage = true;
     }
@@ -152,5 +155,17 @@ public class EnemyOne : MonoBehaviour
     {
         ChasePlayer();
         MoveAnimation();
+    }
+}
+
+public class EnemySound
+{
+    public static void PlayTakeDamageSFX()
+    {
+        // Play random enemy damage audio clip
+        SoundManager.AudioClipID[] possibleIDs = { SoundManager.AudioClipID.ENEMY_DAMAGED,
+            SoundManager.AudioClipID.ENEMY_DAMAGED_2, SoundManager.AudioClipID.ENEMY_DAMAGED_3 };
+        SoundManager.AudioClipID randomAudioID = possibleIDs[Random.Range(0, possibleIDs.Length)];
+        SoundManager.Instance.PlaySFX(randomAudioID);
     }
 }

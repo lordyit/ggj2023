@@ -5,11 +5,19 @@ public class SoundManager : MonoBehaviour
     public enum AudioClipID
     {
         NONE = 0,
+
         MENU_MUSIC = 1,
-        GAMEPLAY_MUSIC = 2,
-        PLAYER_DAMAGED = 3,
-        ENEMY_DAMAGED = 4,
         MENU_BUTTON_CLICK = 5,
+
+        GAMEPLAY_MUSIC = 2,
+
+        PLAYER_DAMAGED_3 = 3,
+
+        ENEMY_DAMAGED = 4,
+        ENEMY_DAMAGED_2 = 6,
+        ENEMY_DAMAGED_3 = 7,
+
+        TOTAL = 8,
     }
 
     [System.Serializable]
@@ -45,6 +53,7 @@ public class SoundManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -78,6 +87,7 @@ public class SoundManager : MonoBehaviour
             if (register.ID == clipID)
             {
                 clip = register.AudioClip;
+                break;
             }
         }
 
