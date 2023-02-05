@@ -34,6 +34,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (!_inputManager._inputAttack.triggered) return;
         if (!CanAttack) return;
+        if (_playerStatus.Dead) return;
 
         _playerAnimations.AttackAnimation();
         CanAttack = false;
@@ -44,6 +45,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (!CanTakeDamage) return;
         FeelManager.Instance.ShakeCamera(5, 0.1f);
+
         CanTakeDamage = false;
         _playerStatus.ChangeLives(damage);
         _playerAnimations.TakeDamageAnimation();

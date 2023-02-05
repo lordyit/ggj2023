@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerAnimations _playerAnimations;
     private PlayerInputManager _inputManager;
+    private PlayerStatus _playerStatus;
 
     private Vector2 _movementValue;
     private Vector3 _finalMove;
@@ -27,11 +28,13 @@ public class PlayerMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _playerAnimations = GetComponent<PlayerAnimations>();
         _inputManager = GetComponent<PlayerInputManager>();
+        _playerStatus = GetComponent<PlayerStatus>();
     }
 
     private void Movement()
     {
         if (!CanMove) return;
+        if (_playerStatus.Dead) return;
 
         _movementValue = _inputManager._inputMovement.ReadValue<Vector2>();
         _finalMove = new Vector3(_movementValue.x, 0, _movementValue.y);

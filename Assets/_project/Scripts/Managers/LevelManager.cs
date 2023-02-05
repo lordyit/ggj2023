@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -50,6 +51,16 @@ public class LevelManager : MonoBehaviour
             runGroundAnimation = true;
             groundAnimationEndTime = Time.time + GROUND_ANIMATION_DURATION;
         }
+    }
+
+    public void ActiveReloadLevel()
+    {
+        StartCoroutine(ReloadLevel());
+    }
+    IEnumerator ReloadLevel()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void Update()

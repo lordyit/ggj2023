@@ -7,6 +7,7 @@ public class PlayerAnimations : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _sprite;
     private PlayerCombat _playerCombat;
+    private PlayerStatus _playerStatus;
 
     WaitForSeconds _waitTakeDamage;
 
@@ -33,6 +34,7 @@ public class PlayerAnimations : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _sprite = GetComponentInChildren<SpriteRenderer>();
         _playerCombat = GetComponent<PlayerCombat>();
+        _playerStatus = GetComponent<PlayerStatus>();
     }
 
     public void WalkAnimation(bool invert)
@@ -57,9 +59,9 @@ public class PlayerAnimations : MonoBehaviour
     {
         StartCoroutine(TakeDamageCr());
     }
-
     IEnumerator TakeDamageCr()
     {
+        if (_playerStatus.Lives <= 0) _playerStatus.Death();
         for (int i = 0; i < 15; i++)
         {
             _sprite.enabled = !_sprite.enabled;
@@ -67,5 +69,6 @@ public class PlayerAnimations : MonoBehaviour
         }
         _sprite.enabled = true;
         _playerCombat.CanTakeDamage = true;
+        
     }
 }
