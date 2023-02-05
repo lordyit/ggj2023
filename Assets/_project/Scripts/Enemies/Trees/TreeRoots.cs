@@ -32,6 +32,7 @@ public class TreeRoots : MonoBehaviour
     {
         if (!_canTakeDamage) return;
 
+        FeelManager.Instance.ShakeCamera(5, 0.1f);
         lives -= damage;
         if (lives <= 0)
         {

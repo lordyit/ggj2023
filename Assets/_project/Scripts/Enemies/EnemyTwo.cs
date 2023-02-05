@@ -86,6 +86,7 @@ public class EnemyTwo : MonoBehaviour
 
     IEnumerator TakeDamageCr()
     {
+        FeelManager.Instance.ShakeCamera(5, 0.1f);
         for (int i = 0; i < 5; i++)
         {
             _sprite.enabled = !_sprite.enabled;

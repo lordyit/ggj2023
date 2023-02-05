@@ -89,6 +89,7 @@ public class NormalTree : MonoBehaviour
         if (!_canTakeDamage) return;
         if (!CanTakeDamage()) return;
 
+        FeelManager.Instance.ShakeCamera(5, 0.1f);
         _lives -= damage;
         if (_lives <= 0)
         {

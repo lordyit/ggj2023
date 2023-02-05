@@ -43,7 +43,7 @@ public class PlayerCombat : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (!CanTakeDamage) return;
-
+        FeelManager.Instance.ShakeCamera(5, 0.1f);
         CanTakeDamage = false;
         _playerStatus.ChangeLives(damage);
         _playerAnimations.TakeDamageAnimation();

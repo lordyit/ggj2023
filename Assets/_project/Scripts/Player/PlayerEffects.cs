@@ -17,8 +17,8 @@ public class PlayerEffects : MonoBehaviour
     {
         if (_freezed) return;
 
-        Time.timeScale = 0f;
-        StartCoroutine(ApplyFreezeEffect(FreezeEffectTime));
+        //Time.timeScale = 0f;
+        //StartCoroutine(ApplyFreezeEffect(FreezeEffectTime));
     }
 
     private IEnumerator ApplyFreezeEffect(float time)
