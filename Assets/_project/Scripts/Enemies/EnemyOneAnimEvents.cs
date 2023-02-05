@@ -16,7 +16,7 @@ public class EnemyOneAnimEvents : MonoBehaviour
     }
     private void AttackEvent()
     {
-        if (Vector3.Distance(transform.position, _gameManager.PlayerPosition.position) < 3)
+        if (Vector3.Distance(transform.position, _gameManager.PlayerPosition.position) < 4.5f)
         {
             _playerCombat.TakeDamage(_enemyOne.MyDamage);
         }
