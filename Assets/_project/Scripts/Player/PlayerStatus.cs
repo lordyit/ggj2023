@@ -11,6 +11,7 @@ public class PlayerStatus : MonoBehaviour
     private PlayerMovement _playerMovement;
     private PlayerCombat _playerCombat;
     private SpriteRenderer _sprite;
+    private Image _hp;
 
     public int Lives;
     public bool Dead = false;
@@ -25,12 +26,33 @@ public class PlayerStatus : MonoBehaviour
         _playerCombat = GetComponent<PlayerCombat>();
         _playerMovement = GetComponent<PlayerMovement>();
         _sprite = GetComponentInChildren<SpriteRenderer>();
+        _hp = GameObject.Find("HP").GetComponent<Image>();
     }
 
     public void ChangeLives(int change)
     {
         Lives -= change;
+        UpdateHPBar(Lives);
         if (Lives <= 0) Dead = true;
+    }
+
+    private void UpdateHPBar(int life)
+    {
+        switch (life)
+        {
+            case 0:
+                _hp.fillAmount = 0;
+                break;
+            case 1:
+                _hp.fillAmount = 0.33f;
+                break;
+            case 2:
+                _hp.fillAmount = 0.66f;
+                break;
+            case 3:
+                _hp.fillAmount = 1;
+                break;
+        }
     }
 
     public void Death()
