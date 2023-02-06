@@ -56,7 +56,6 @@ public class SoundManager : MonoBehaviour
     private AudioClipRegister[] audioClipRegisters = null;
 
     private int currentSFXAudioSourceIndex;
-    private int currentMusicAudioSourceIndex;
 
     private static SoundManager instance;
 

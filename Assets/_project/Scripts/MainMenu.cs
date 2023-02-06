@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject creditsScreen = null;
 
-    private void Awake()
+    private void Start()
     {
         SoundManager.Instance.PlayMusic(SoundManager.AudioClipID.MENU_MUSIC);
     }
